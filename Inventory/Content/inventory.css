@@ -1,0 +1,367 @@
+﻿.UserRoleDependence {
+    visibility: visible;
+    display: normal;
+}
+
+.my_1_5, .my_1_4, .my_1_3 {
+    width: 60px;
+    text-align: center;
+}
+
+.my_1_4 {
+    width: 115px;
+}
+
+    .my_1_4.awaiting {
+        background-color: #FFFF88 !important;
+    }
+
+    .my_1_4.ordered {
+        background-color: #cafabc !important;
+    }
+
+.my_1_3 {
+    width: 155px;
+}
+
+.my_1_2 {
+    width: 180px;
+}
+
+.my_3_4 {
+    width: 250px;
+}
+
+#OrderList th div {
+    display: block;
+    text-align: center;
+}
+
+.orderDatas {
+    display: block;
+    min-height: 20px;
+}
+
+    .orderDatas.lftmrgn {
+        margin-left: 3px;
+    }
+
+#ValidationMessage {
+    color: #f00;
+    float: left;
+    clear: right;
+    0display: none;
+}
+
+    #ValidationMessage li {
+        display: none;
+    }
+
+#AddNewAsset {
+    float: left;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    color: #fff;
+    background-color: #5bc0de;
+    border: 1px solid #46b8da;
+    border-radius: 12px 12px;
+    margin: 6px 0 0 5px;
+    cursor: pointer;
+}
+
+    #AddNewAsset:hover {
+        background-color: #39b3d7;
+        border-color: #269abc;
+    }
+
+.orderActions {
+    display: block;
+    padding-top: 6px;
+    min-height: 20px;
+    visibility: hidden;
+    margin-left: 12px;
+}
+
+.AssetIdHiddenRow, .OrderIdHiddenRow {
+    visibility: hidden;
+    display: none;
+}
+
+.centerMe {
+    text-align: center;
+}
+
+.visibleMe {
+    visibility: visible;
+    display: block;
+}
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+    display: block;
+    float: right;
+}
+
+    /* style icon */
+    .inner-addon .glyphicon {
+        position: absolute;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+/* align icon */
+.right-addon .glyphicon {
+    right: 10px;
+}
+
+/* add padding  */
+.right-addon input {
+    padding-right: 30px;
+}
+
+.rotate {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083); /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+    -moz-transform: rotate(-90.0deg); /* FF3.5+ */
+    -ms-transform: rotate(-90.0deg); /* IE9+ */
+    -o-transform: rotate(-90.0deg); /* Opera 10.5 */
+    -webkit-transform: rotate(-90.0deg); /* Safari 3.1+, Chrome */
+    transform: rotate(-90.0deg); /* Standard */
+}
+
+
+
+/*------------------- styles for the mailling page  -------------------*/
+
+#searchButton {
+    position: absolute;
+    right: 15px;
+    background: url("../../Content/images/seach_icon_34x34.png") no-repeat scroll 0 0 transparent;
+    height: 34px;
+    width: 34px;
+    border: none;
+}
+
+.attachButton {
+    color: transparent;
+    text-align: center;
+    margin-left: 6px;
+    border: none;
+    height: 40px;
+    width: 40px;
+}
+
+    .attachButton.send {
+        background: url("../../Content/images/asd41.png") no-repeat scroll 5px 8px transparent;
+    }
+
+    .attachButton.attachment {
+        background: url("../../Content/images/asd21.png") no-repeat scroll 11px 8px transparent;
+    }
+
+    .attachButton.newTemplate {
+        background: url("../../Content/images/asd32.png") no-repeat scroll 7px 8px transparent;
+    }
+
+        .attachButton.newTemplate.zaznaczone {
+            background-color: #2a6496;
+        }
+
+    .attachButton:hover {
+        text-decoration: none;
+        background-color: #2a6496;
+    }
+
+
+.highlight {
+    background-color: #FFFF88;
+}
+
+#addMessageTemplate {
+    position: relative;
+    top: 25px;
+    left: 78%;
+    visibility: visible;
+    background-color: transparent;
+    border: none;
+}
+
+#MessageContainer {
+    clear: both;
+    float: left;
+    width: 100%;
+    height: 350px;
+    background-color: #fff;
+    overflow: hidden;
+    display: none;
+    /*visibility: hidden;*/
+}
+
+    #MessageContainer.showMe {
+        display: normal;
+        /*visibility: visible;*/
+    }
+
+
+/*------------------- menu styles for the mailling page  -------------------*/
+
+#MessageBarOption {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    position: relative;
+}
+
+    #MessageBarOption input[type=button] {
+        position: absolute;
+        bottom: 0;
+    }
+
+.li-msg-menu {
+    display: inline-block;
+}
+
+.ul-msg-submenu {
+    border: 1px solid #2a6496;
+    border-top: none;
+    background-color: #fff;
+    position: absolute;
+    padding: 4px;
+    margin: 15px 0 0 6px;
+    display: none;
+}
+
+.li-msg-submenu {
+    list-style-type: none;
+    width: 150px;
+}
+
+    .li-msg-submenu:hover {
+        background-color: #ddd;
+    }
+/* ---------------------------- modal box with: add new asset form, delete order item ----------------------------*/
+#ModalBackground {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.79);
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+#ModalMultiFuntionalBox {
+    visibility: hidden;
+    position: fixed;
+    left: 50%;
+    top: 200px;
+    height: auto;
+    background-color: #fff;
+    padding: 0 0 20px 0;
+}
+
+    #ModalMultiFuntionalBox span {
+        float: right;
+        color: #fff;
+        cursor: pointer;
+        position: absolute;
+        right: 5px;
+        0top: 1px;
+    }
+
+    #ModalMultiFuntionalBox table {
+        position: relative;
+        left: 50%;
+        margin: 10px 0 30px 0;
+    }
+
+        #ModalMultiFuntionalBox table td {
+            min-height: 30px;
+            min-width: 80px;
+        }
+
+        #ModalMultiFuntionalBox table tr {
+            padding: 8px;
+            line-height: 1.428571429;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        #ModalMultiFuntionalBox table th {
+            background-color: #eee;
+        }
+
+
+#DeleteModalBoxButtons {
+    display: block;
+    position: relative;
+    left: 50%;
+    width: 200px;
+    text-align: center;
+    margin-left: -100px;
+}
+
+    #DeleteModalBoxButtons input[type=button] {
+        margin-right: 15px;
+    }
+
+.DeleteRowLink, .EditRowLink {
+    color: #428bca;
+    text-decoration: none;
+    background-color: transparent;
+    margin-right: 5px;
+}
+
+    .DeleteRowLink:hover, a.DeleteRowLink:focus {
+        color: #2a6496;
+        text-decoration: none;
+    }
+
+    .EditRowLink:hover, a.EditRowLink:focus {
+        color: #2a6496;
+        text-decoration: none;
+    }
+
+.NewAssetParametersRow {
+    0background-color: #cFc;
+    height: 50px;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.meleff {
+    margin-left: -50px;
+}
+
+
+/* -----------------------------  FOR TESTING PURPOSE ----------------------------- */
+
+.myLink {
+    color: #428bca;
+    text-decoration: none;
+    background-color: transparent;
+    margin: 0 3px 0 3px;
+}
+
+    .myLink:hover, a.myLink:focus {
+        color: #2a6496;
+        text-decoration: none;
+    }
+
+.notActive {
+    color: #aaa;
+    text-decoration: none;
+    background-color: transparent;
+    margin: 0 2px 0 3px;
+    cursor: default !important;
+}
+
+.Receiver {
+    cursor: pointer;
+}
+
+    .Receiver.selected {
+        font-weight: bold;
+    }

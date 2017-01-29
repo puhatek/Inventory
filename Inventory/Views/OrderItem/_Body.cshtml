@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Inventory.Models.OrderItem>
+
+
+@{
+    var sortedModel = Model;
+    if (User.IsInRole("Admin"))
+    {
+        sortedModel = Model.OrderBy(i => i.StatusPriority).ThenBy(i => i.Supplier).ThenBy(i => i.AssetName);
+    }
+    else
+    {
+        sortedModel = Model.OrderBy(i => i.StatusPriority).ThenBy(i => i.AssetName);
+    }
+}
+
+
+@foreach (var item in sortedModel)
+{
+    <tr>
+        <td class="AssetIdHiddenRow">@Html.DisplayFor(m => item.AssetId)</td>
+        <td class="OrderIdHiddenRow">@Html.DisplayFor(m => item.OrderId)</td>
+        <td class="my_1_5 UserRoleDependence">
+            <div class="orderDatas">
+                @if (item.Status == "Oczekujące")
+                {
+                    @Html.CheckBox("isSelected", new { @class = "isSelected" })
+                }
+                else
+                {
+                    @Html.CheckBox("isSelected", new { @class = "notActive", disabled = "disabled", style = "cursor:default" })
+                }
+            </div>
+            <div class="orderActions"></div>
+        </td>
+
+
+
+        <td class="my_1_3">
+            <div class="orderDatas">@Html.DisplayFor(m => item.InsertDate)</div>
+            <div class="orderActions">
+                @if (item.Status == "Oczekujące")
+                {
+                    <div style="float:left">
+                        @Html.ActionLink("Edytuj", "Edit", new { AssetId = item.AssetId, OrderId = item.OrderId, AssetName = item.AssetName, item.UM, item.Supplier, item.ExtraAssetDescription, isConditionalEdit = false }, new { @class = "EditRowLink" })
+                    </div>
+                }
+                @if (item.Status == "Do wysłania")
+                {
+                    <div style="float:left">
+                        @Html.ActionLink("Edytuj", "Edit", new { AssetId = item.AssetId, OrderId = item.OrderId, AssetName = item.AssetName, item.UM, item.Supplier, item.ExtraAssetDescription, isConditionalEdit = true }, new { @class = "EditRowLink" })
+                    </div>
+                }
+                @if ((item.Status == "Oczekujące") || (item.Status == "Do wysłania" && User.IsInRole("Admin")))
+                {
+                    <div style="float:left">
+                        |<input class="DeleteRowLink" type="button" value="Delete" style="border: none" />
+                    </div>
+
+                }
+            </div>
+        </td>
+
+        <td>
+            <div id="assetRow" class="orderDatas lftmrgn">@Html.DisplayFor(m => item.AssetName)</div>
+            <div class="orderActions"></div>
+        </td>
+        <td class="my_1_2">
+            <div class="orderDatas">@Html.DisplayFor(m => item.ExtraAssetDescription)</div>
+            <div class="orderActions"></div>
+        </td>
+        <td class="my_1_5">
+            <div id="umRow" class="orderDatas">@Html.DisplayFor(m => item.UM)</div>
+            <div class="orderActions"></div>
+        </td>
+        <td class="my_1_4">
+            <div id="qtyRow" class="orderDatas">@Html.DisplayFor(m => item.Qty)</div>
+            <div class="orderActions"></div>
+        </td>
+        <td class="my_1_5">
+            <div class="orderDatas">@Html.DisplayFor(m => item.isMedicine)</div>
+            <div class="orderActions"></div>
+        </td>
+        <td class="my_1_4 UserRoleDependence">
+            <div class="orderDatas">@Html.DisplayFor(m => item.Supplier)</div>
+            <div class="orderStatus"></div>
+        </td>
+        @if (item.Status == "Oczekujące")
+        {
+            <td class="my_1_4 awaiting">
+                <div class="orderDatas">@Html.DisplayFor(m => item.Status)</div>
+                <div class="orderActions"></div>
+            </td>
+        }
+        @if (item.Status == "Do wysłania")
+        {
+            <td class="my_1_4 ordered">
+                <div class="orderDatas awaiting">@Html.DisplayFor(m => item.Status)</div>
+                <div class="orderActions"></div>
+            </td>
+        }
+
+        @if (item.Status == "Wysłane")
+        {
+            <td class="my_1_4" style="background-color:#bbb;color:#333">
+                <div class="orderDatas">@Html.DisplayFor(m => item.Status)</div>
+                <div class="orderActions"></div>
+            </td>
+        }
+
+        <td class="my_1_4 hidden">
+            <div class="orderDatas">@Html.DisplayFor(m => item.StatusPriority)</div>
+            <div class="orderActions"></div>
+        </td>
+    </tr>
+}
+
+

@@ -1,0 +1,34 @@
+﻿.UserRoleDependence {
+    visibility: hidden;
+    display: none;
+}
+
+.my_1_5, .my_1_4, .my_1_3 {
+    max-width: 70px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.my_1_4 {
+    min-width: 120px;
+}
+
+.my_1_3 {
+    min-width: 155px;
+}
+
+.my_1_2 {
+    width: 210px;
+}
+
+.my_3_4 {
+    width: 250px;
+}
+
+tr#AddItemHeader #AssetName {
+    min-width: 90%;
+}
+
+.orderDatas.lftmrgn {
+    margin-left: 10px;
+}

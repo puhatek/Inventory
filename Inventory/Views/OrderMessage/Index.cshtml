@@ -1,0 +1,44 @@
+﻿@*@model  IEnumerable<Inventory.Models.OrderItem>*@
+
+@model Inventory.Models.MailingView
+
+@{
+    ViewBag.Title = "Korespondencja";
+}
+
+<h2>Korespondencja</h2>
+<br />
+@if (!Model.OrderItems.ToList().Count().Equals(0))
+{
+    using (Ajax.BeginForm("SetMessageTemplate", "OrderMessage", new AjaxOptions { HttpMethod = "POST", OnSuccess = "hideprogressbar", Url = "OrderMessage/Index" }))
+    {
+    <div class="row" style="margin-bottom: 50px">
+        <div style="float: left; width: 400px">
+            @Html.Partial("_OrderToSend", Model.OrderItems)
+        </div>
+        <div id="OrderToSendDetailsContainer" style="float: right; width: 650px">
+            @Html.Partial("_OrderToSendDetails", Model.OrderItems)
+        </div>
+    </div>
+
+
+        @Html.AntiForgeryToken()
+    <div id="MessageContainer">
+        <div id="raz" style="max-height:200px; min-height:200px; float:left;width:350px; background-color:#eee">
+            @Html.Partial("_MessageContainer", Model.Message)
+        </div>
+
+        <div id="myTextArea" contenteditable="false" style=" float:left; width: 60%; border: solid 1px #ccc; padding: 10px 10px; overflow-y:auto; min-height: 200px; max-height: 200px">
+                
+        </div>
+
+    </div>
+    }    
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/send.message.js"></script>  
+}
+
+
+

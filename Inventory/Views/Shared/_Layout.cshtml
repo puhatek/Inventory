@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MAGAZYN</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @if (User.IsInRole("Admin"))
+    {
+        @Styles.Render("~/Content/css")
+    }
+    else
+    {
+        @Styles.Render("~/Content/css_user")
+    }
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" style="padding-top:5px">
+
+                <img src="~/Content/images/logo.png" alt="" height="40" />
+            </div>
+            <div class="navbar-collapse collapse">
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Tomasz Gadowski</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/inventory")
+    <script src="~/Scripts/inventory.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

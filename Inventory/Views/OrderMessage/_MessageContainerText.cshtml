@@ -1,0 +1,6 @@
+﻿@using Inventory.Models.Helpers;
+@model Inventory.Models.Message
+
+@Html.Table(m => m.MessageText, new {@border="1", @rules="rows", @cellpadding="3", @cellspacing="1", @bordercolor="#ddd", @frame="hsides" })
+
+

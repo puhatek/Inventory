@@ -1,0 +1,40 @@
+﻿@model Inventory.Models.OrderNewItem
+
+<tr id="AddItemHeader" class="success">
+    <td class="my_1_5 UserRoleDependence"></td>
+    <td class="my_1_3">
+        @Html.TextBoxFor(model => model.InsertDate, new { disabled = "disabled", @class = "ui-menu form-control" })       
+    </td>
+    <td>
+        <div style="width:100%">
+            @Html.TextBoxFor(model => model.AssetName, new { data_asset_autocomplete = @Url.Action("AssetAutocomplete"), @class = "ui-menu form-control", @style="float:left;width:88%" })             
+            <span id="AddNewAsset">+</span> 
+            <br />
+            @Html.ValidationMessageFor(model => model.AssetName)           
+        </div>                            
+    </td>
+    <td class="my_1_2">
+        @Html.TextBoxFor(model => model.ExtraAssetDescription, new { @class = "form-control" })
+    </td>
+    <td class="my_1_5 centerMe">
+        @Html.TextBoxFor(model => model.UM, new { disabled = "disabled", @class = "form-control" })
+    </td>
+    <td class="my_1_4 centerMe">
+        @Html.TextBoxFor(model => model.Qty, new { type = "number", @class = "form-control", Style="text-align:center" })
+    </td>
+    <td class="my_1_5 centerMe">
+        <label>
+            <input class="checkbox" data-val="true" id="addMedicine" name="isMedicine" value="true" type="checkbox"> &nbsp;
+        </label>
+        <input name="isMedicine" type="hidden" value="false" />
+    </td>
+
+    <td class="my_1_4 UserRoleDependence">
+        @Html.TextBoxFor(model => model.Supplier, new { data_supplier_autocomplete = @Url.Action("SupplierAutocomplete"), style = "width:80%", @class = "ui-menu form-control" }) 
+    </td>
+    <td class="my_1_4 centerMe">   
+        <input type="submit" value="Dodaj" class="btn btn-info" />                                               
+    </td>
+    <td class="my_1_4 hidden"></td>
+</tr>
+

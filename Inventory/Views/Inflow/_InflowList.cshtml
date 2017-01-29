@@ -1,0 +1,90 @@
+﻿@model List<Inventory.Models.Inflows.InflowItem>
+
+<div id="inflowTableContainer">
+    <table id="inflowTable">
+        <thead>
+            <tr>
+                <th>@Html.LabelFor(l => Model[0].AssetName)</th>
+                <th>@Html.LabelFor(l => Model[0].AssetIndex)</th>
+                <th>@Html.LabelFor(l => Model[0].Qty)</th>
+                <th>@Html.LabelFor(l => Model[0].UM)</th>
+                <th>@Html.LabelFor(l => Model[0].Value)</th>
+                <th>@Html.LabelFor(l => Model[0].Vat)</th>
+                <th>@Html.LabelFor(l => Model[0].Price)</th>
+            </tr>
+        </thead>
+        @{
+            int i = 0;
+        }
+
+        <tbody>
+
+            @foreach (Inventory.Models.Inflows.InflowItem hmm in Model)
+            {
+
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(m => hmm.AssetName)*@
+                        <input type="text" value="@hmm.AssetName" name="AssetName[@i]" />
+                        <input type="hidden" value="@hmm.AssetId" name="hiddenAssetId[@i]" />
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(m => hmm.AssetIndex)*@
+                        <input type="text" value="@hmm.AssetIndex" name="AssetIndex[@i]" />
+
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(m => hmm.Qty)*@
+                        <input type="text" value="@hmm.Qty" name="Qty[@i]" />
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(m => hmm.UM)*@
+                        <input type="text" value="@hmm.UM" name="UM[@i]" />
+                    </td>
+                    <td style="text-align: center">
+                        @*@Html.TextBoxFor(m => hmm.Value, new { @name = "value[" + i++ + "]", @class = "itemValue", @style = "border: none; border-bottom:solid red 1px; width: 50px; text-align:center" })*@
+                        <input type="text" value="@hmm.Value" name="Value[@i]" />
+                    </td>
+                    <td style="text-align: center" class="vat">
+                        @*@Html.DisplayFor(m => hmm.Vat)*@
+                        <input type="text" value="@hmm.Vat" name="Vat[@i]" />
+
+                    </td>
+                    <td style="text-align: center" class="itemPrice">
+                        @*@Html.DisplayFor(m => hmm.Price)*@
+                        <input type="text" value="@hmm.Price" name="Price[@i]" />
+
+                    </td>
+                </tr>
+                {
+                    i++;
+                }
+            }
+            <tr>
+                <td colspan="2">ŁĄCZNIE</td>
+                <td class="qtyTotal"></td>
+                <td style="text-align: center">x</td>
+                <td class="valueTotal"></td>
+                <td style="text-align: center">x</td>
+                <td class="priceTotal"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    @Html.LabelFor(l => Model[0].InflowNumber)
+    @Html.TextBox("InflowId", Model[0].InflowNumber, new { @style = "border: none; border-bottom:solid red 1px; width: 50px; text-align:center" })<br />
+
+    @Html.LabelFor(l => Model[0].Invoice)
+    @Html.TextBox("Invoice", Model[0].Invoice, new { @style = "border: none; border-bottom:solid red 1px; width: 50px; text-align:center" })<br />
+
+
+    @*@Html.LabelFor(l => l.Invoice) @Html.TextBox("Invoice", null, new { @style = "border: none; border-bottom:solid red 1px; width: 50px; text-align:center" })<br />
+        @Html.LabelFor(l => l.InvoiceDate) @Html.TextBox("InvoiceDate", null, new { @style = "border: none; border-bottom:solid red 1px; width: 50px; text-align:center" })<br />*@
+    @*@Html.ActionLink("Dodaj PZ", "NewInflow", Model.InflowId)*@
+
+    <input id="takitest" type="submit" name="NewInflow" value="Dodaj PZ" class="btn btn-success" />
+    <input type="button" name="NewQRCodeList" value="Generuj QR kody" class="btn btn-success" />
+    <br /><br />
+
+</div>
+

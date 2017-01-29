@@ -1,0 +1,127 @@
+﻿@*@model Inventory.Models.Inflows.InflowView*@
+
+@model Dictionary<int, List<Inventory.Models.Inflows.InflowItem>>
+
+
+@using (Html.BeginForm("NewInflow", "Inflow"))// new { model = Model.InflowItems }))
+{
+    @Html.AntiForgeryToken()
+    <h2>Przychód Zewnętrzny</h2>
+    <div style="min-height:50px; padding: 10px 0 10px 30px">
+        <input type="radio" checked="checked" name="inflowOption" value="Add" />Dodaj
+        <input type="radio" name="inflowOption" value="Edit" style="margin-left:20px" />Edytuj
+    </div>
+
+    @*@Html.Partial("_InflowHeader", Model.GetInflowsList())*@
+
+
+    foreach (KeyValuePair<int, List<Inventory.Models.Inflows.InflowItem>> item in Model)
+    {
+        <div class="orderForInflowContainer">
+            <div class="inflowHeader" style="border:1px solid #bbb; cursor:pointer">
+                <h3><label class="lbl_orderId">@item.Key</label>: @item.Value[0].SupplierName : @item.Value[0].OrderDate</h3>
+                <input type="hidden" value="@item.Key" name="hiddenOrderId" />
+            </div>
+            <div class="orderDetailsForInflow" style="display:none">
+                @if (Request.IsAjaxRequest())
+                {
+                    @Html.Partial("_InflowList", item.Value)
+                }
+            </div>
+        </div>
+    }
+}
+
+
+@section Scripts{
+
+    <style>
+        #inflowTable tbody tr td {
+            width: 12%;
+        }
+
+            #inflowTable tbody tr td input {
+                border: none;
+            }
+
+                #inflowTable tbody tr td input .editable {
+                    border-bottom: 1px solid red;
+                }
+
+            #inflowTable tbody tr td:nth-child(1) {
+                width: 24%;
+            }
+    </style>
+
+    <script>
+
+
+        function dupa() {
+            alert($("#InflowId").val());
+        }
+
+        $(".inflowHeader").click(function () {
+            var dataToShow = $(this).siblings("div.orderDetailsForInflow");
+            var orderId = $(this).find("label.lbl_orderId").html();
+            GetOrderDetails(dataToShow, orderId);
+
+
+
+
+
+
+        });
+
+
+        function GetOrderDetails(dataToShow, _orderId) {
+            $.get("Inflow/GetOrderDetailsForInflow", { orderId: _orderId }, function (data) {
+                $("#inflowTableContainer").remove();
+                dataToShow.html(data);
+            }).done(function () {
+
+
+
+                if (!dataToShow.is(":visible")) {
+                    $("div.orderDetailsForInflow").slideUp();
+                }
+                dataToShow.first("div.orderDetailsForInflow").slideToggle("slow");
+
+                $("input.itemValue").on("focusout", function (e) {
+
+                    GetPrice(e);
+                });
+
+                //$("#takitest").on("click", dupa);
+
+
+
+            });
+        }
+
+        function GetPrice(e) {
+            var itemValue = parseFloat($(e.target).context.value.replace(",", "."));
+            var vat = parseFloat($(e.target).parent().siblings(".vat").text().replace(",", "."));
+            var price = itemValue == "" ? "" : (itemValue * (1 - vat)).toFixed(2).toString().replace(".", ",");
+            $(e.target).parent().siblings(".itemPrice").html(price);
+
+            //summup values
+
+            var table = document.getElementById('inflowTable');
+            var rowLength = table.rows.length - 1;
+            var totalQty = 0;
+            for (var i = 1; i < rowLength; i++) {
+                totalQty += parseFloat(table.rows[i].cells[2].textContent);
+                if (i + 1 == rowLength) {
+                    table.rows[i + 1].cells[1].innerHTML = totalQty;
+                }
+            }
+
+
+
+        }
+
+    </script>
+}
+
+
+

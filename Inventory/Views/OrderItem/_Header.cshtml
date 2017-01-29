@@ -1,0 +1,14 @@
+﻿@model Inventory.Models.OrderNewItem
+
+<tr>
+    <th class="my_1_5 UserRoleDependence"> <div> @Html.CheckBox("SelectAll")                    </div></th>
+    <th class="my_1_3">       @Html.DisplayNameFor(m => m.InsertDate)              </th>
+    <th>       @Html.DisplayNameFor(m => m.AssetName)                              </th>
+    <th class="my_1_2">       @Html.DisplayNameFor(m => m.ExtraAssetDescription)   </th>
+    <th class="my_1_5"> <div> @Html.DisplayNameFor(m => m.UM)                </div></th>
+    <th class="my_1_4"> <div> @Html.DisplayNameFor(m => m.Qty)               </div></th>
+    <th class="my_1_5"> <div> @Html.DisplayNameFor(m => m.isMedicine)        </div></th>
+    <th class="my_1_4 UserRoleDependence">       @Html.DisplayNameFor(m => m.Supplier)                </th>
+    <th class="my_1_4"> <div> @Html.DisplayName("Status")                    </div></th>
+    <th class="my_1_4 hidden"> <div> @Html.DisplayName("Priorytet")                 </div></th>
+</tr>

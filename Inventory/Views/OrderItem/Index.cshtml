@@ -1,0 +1,146 @@
+﻿@model Inventory.Models.OrderView
+
+@{
+    ViewBag.Title = "Zapotrzebowanie";
+}
+
+<h2>Zapotrzebowanie</h2>
+
+    <ul id="ValidationMessage">
+        <li id="Asset_errorMsg"></li>
+        <li id="Qty_errorMsg"></li>
+    </ul>
+
+
+@using (Ajax.BeginForm("Search", "OrderItem", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "OrderListBodyContainer", OnSuccess = "highlightFounded" }))
+{
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="col-lg-3 inner-addon right-addon">
+        <input type="submit" value="" id="searchButton" />
+        @Html.TextBox("term", "", new { @class = "form-control" })
+    </div>
+
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <form id="__myAjaxAntiForgeryForm" action="#" method="post">
+        @Html.AntiForgeryToken()
+
+        <table style="clear:left">
+            <tr>
+                <td>@Html.DropDownList("Options", Model.Options, new { @class = "form-control", style = "width: 150px" })</td>
+                <td>
+                    <input id="submitBulkOperation" type="submit" value="Zatwierdź" class="btn btn-info" />
+                </td>
+            </tr>
+        </table>
+    </form>
+}
+
+
+<table id="OrderList" class="table table-striped">
+    <thead>
+        @Html.Partial("_Header", Model.NewItem)
+    </thead>
+    <tbody id="OrderListAddItemContainer">
+        @using (Ajax.BeginForm("Create", "OrderItem", new AjaxOptions { HttpMethod = "POST", OnSuccess = "clearControls(data)" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Partial("_AddItem", Model.NewItem)
+        }
+    </tbody>
+    <tbody id="OrderListBodyContainer">
+        @Html.Partial("_Body", Model.OrderItems)
+    </tbody>
+</table>
+
+@Html.Partial("_DeleteMessage")
+
+@*forma implementująca wyszukiwanie treści na stronie*@
+<div id="filtersContainer" style="position:fixed; top:150px; right:0px; min-width:180px; min-height:200px; background-color:transparent;visibility:hidden">
+    <div id="filtersLaber" style="position:absolute; left:0; top:0; max-width:22px; min-height:200px; background-color:#111; float:left">
+        <p class="rotate" style="margin-top:90px;color:#eee">FILTROWANIE</p>
+
+    </div>
+    <div style="position:relative; width:158px; min-height:200px; background-color:rgba(0, 0, 0, 0.62); float:right;padding-left:10px;color:#eee">
+        Status:<br />
+        <select id="filters" multiple="multiple">
+            <option value="1">Oczekujące</option>
+            <option value="2">Do wysłania</option>
+            <option value="3">Wysłane</option>
+            <option value="4">Zrealizowane</option>
+        </select><br />
+        Od:<br />
+        <input type="text" /><br />
+        Do:<br />
+        <input type="text" /><br /><br />
+        <input type="button" value="pokaż" class="btn" />
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script>
+
+        function clearControls(data_) {
+
+            //clean error if any
+            if ($("#ValidationMessage li").is(":visible")) {
+                $("#Asset_errorMsg").empty();
+                $("#Qty_errorMsg").empty();
+                $("#ValidationMessage li").hide();
+            }
+
+
+            //post page to the server and refresh page
+            $.get("OrderItem/UpdateOrderList", { partialToReturn: "body" }, function (data) {
+                $("#OrderListBodyContainer").html(data);
+            }).done(function () {
+
+                //check if adding a new asset returs any errors 
+                if (data_[1]) {
+                    $("#AssetName").val("");
+                    $("#AddMedicine").prop("checked", false);
+                    $("#Qty").val("");
+                    $("#UM").val("");
+                    $("#ExtraAssetDescription").val("");
+                    $("#Supplier").val("");
+                    $("#AssetName").focus();
+                }
+                else {                  
+                    for (var i = 0; i < data_[0].length; i++) {
+                        var ee = data_[0][i][1];
+                        switch (data_[0][i][0]) {
+                            case "AssetName":
+                                $("#Asset_errorMsg").append(data_[0][i][1]);
+                                $("#Asset_errorMsg").toggle();
+                                break;
+                            case "Qty":
+                                $("#Qty_errorMsg").append(data_[0][i][1]);
+                                $("#Qty_errorMsg").toggle();
+                                break;
+                        }
+                    }
+                }
+
+                //add delegate for the delete link. 
+                $(".DeleteRowLink").on("click", $("input[class=DeleteRowLink]"), function () {
+                    ShowDeleteMessage($(this));
+                });
+            });
+        }
+
+        function highlightFounded() {
+            var term = $("#term").val();
+            $("#OrderListBodyContainer").highlight(term);
+        }
+
+        $("#filters").multipleSelect();
+
+    </script>
+}

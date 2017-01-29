@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<assets>
+  <asset>
+    <AssetName>asset_001</AssetName>
+    <isMedicine>false</isMedicine>
+    <stockId>1</stockId>
+    <UM>op.</UM>
+  </asset>
+  <asset>
+    <AssetName>asset_002</AssetName>
+    <isMedicine>false</isMedicine>
+    <stockId>2</stockId>
+    <UM>szt.</UM>
+  </asset>  
+  <asset>
+    <AssetName>asset_003</AssetName>
+    <isMedicine>true</isMedicine>
+    <stockId>1</stockId>
+    <UM>op.</UM>
+  </asset>
+</assets> 

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Inventory.Models.OrderItem>
+
+
+<table id="OrdersToSend" class="table table-hover">
+    <thead>
+        <tr>
+            <th style="display:none">
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th>
+                @Html.DisplayName("Wartość")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="display:none">
+                    <div class="orderDatas hiddenOrderId"> @Html.DisplayFor(model => item.OrderId) </div>
+                    <div class="orderActions"></div>
+                </td>
+                <td style="width: 300px">
+                    <div class="orderDatas Supplier"><span class="Receiver"> @Html.DisplayFor(modelItem => item.Supplier)</span></div>
+                    <div class="orderActions">
+                        <input class="notActive" type="button" value="Email" style="border: none" onclick="setEmail(@item.OrderId)" />@*myLink SetEmailLink*@
+                        |<input class="notActive" type="submit" name="clickButton" value="Pdf" style="border: none" />@*myLink SetPDfLink*@
+                        |<input class="notActive" type="button" value="Historia" style="border: none" />@*myLink ShowHistoryLink*@
+                    </div>
+                </td>
+                <td>
+                    <div class="orderDatas"> @Html.CheckBox("OrderValue")</div>
+                    <div class="orderActions"></div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

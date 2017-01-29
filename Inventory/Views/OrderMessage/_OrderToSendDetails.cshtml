@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Inventory.Models.OrderItem>
+<div id="OrderToSendDetailsContainer" style="float:right; width:650px">
+    <table id="OrderToSendDetails" class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SetMailingDate)
+                </th>
+                <th id="AssetColumn">
+                    @Html.DisplayNameFor(model => model.AssetName)
+                </th>
+                <th id="QtyColumn">
+                    @Html.DisplayNameFor(model => model.Qty)
+                </th>
+                <th id="UMColumn">@Html.DisplayNameFor(model => model.UM)</th>
+                <th id="VatColumn">
+                    Vat
+                </th>
+                <th id="PriceColumn">
+                    Cena
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.First().AssetName != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.SetMailingDate)
+                        </td>
+                        <td style="width:250px">
+                            @Html.DisplayFor(model => item.AssetName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Qty)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.UM)
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

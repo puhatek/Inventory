@@ -1,0 +1,47 @@
+﻿@using Inventory.Models.Helpers
+@using Inventory.Models
+@using System.Web.Helpers
+@model Inventory.Models.Message
+
+
+@Html.Hidden("Attachment", string.Empty)
+
+<div style="width:100%;float:left">
+
+    <div style="width:100%; background-color:#5bc0de;display:inline-block;padding:0;margin:0">
+        <div style="float:left">
+            <ul id="MessageBarOption">
+                <li class="li-msg-menu">
+                    <input type="submit" class="attachButton send" name="clickButton" value="wyślij" onclick="showprogressbar()" />
+                </li>
+                <li class="li-msg-menu">
+                    <input type="submit" class="attachButton attachment" name="clickButton" value="załącznik" />
+                </li>
+                <li class="li-msg-menu">
+                    <input id="addNewMessageData" type="button" class="attachButton newTemplate" onclick="showAddOptions()" />
+                    <ul class="ul-msg-submenu">
+                        <li class="li-msg-submenu">Adres mailowy</li>
+                        <li class="li-msg-submenu">Temat wiadomości</li>
+                        <li class="li-msg-submenu">
+                            <input id="messageTemplate" style="cursor:pointer; border:none;background-color:transparent;padding:0;margin:0;color:#333" onclick="setMessageTemplate()" value="Edytuj szablon" />
+                        </li> @*name="clickButton" value="Szablon wiadomości" /></li>*@
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="progressBar" style="display:none; padding-top:10px; margin-left:60px; width:90px; float:left;color:#fff ">
+            <p>Wysyłanie...</p>
+        </div>
+
+    </div>
+
+    <div class="container text-left" style="margin-bottom:5px">
+        <span>Do:</span><br /> @Html.TextBox("Recipient", Model.Recipient, new { style = "width : 300px;float:left", @class = "form-control" })
+    </div>
+    <div class="container text-left">
+        <span>Temat:</span><br /> @Html.TextBox("Subject", string.Empty, new { style = "width : 300px;float:left", @class = "form-control" })
+
+    </div>
+</div>
+
+@Html.TextBox("SupplierId", Model.SupplierId, new { style = "visibility: hidden" })

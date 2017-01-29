@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebTest Name="AddNewOrderItem" Id="04730210-9cf3-4c55-a20c-0b32eaafe000" Owner="" Priority="2147483647" Enabled="True" CssProjectStructure="" CssIteration="" Timeout="0" WorkItemIds="" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" Description="" CredentialUserName="" CredentialPassword="" PreAuthenticate="True" Proxy="default" StopOnError="False" RecordedResultFile="WebTest1.91e9c205-333d-4947-8035-efe1ac962db9.rec.webtestresult" ResultsLocale="">
+  <Items>
+    <Request Method="GET" Guid="fc4dbf64-b263-43a8-84d5-7db9ecd075b4" Version="1.1" Url="http://localhost/MVC_Inventory/OrderItem/isMedicine" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0.1" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/javascript, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://localhost/MVC_Inventory/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="AssetName" Value="KOMPRESY+GAZ.11X10+A+3+JA%C5%81OWE" RecordedValue="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="c9aa377f-82e9-4042-8333-8126fb9f6003" Version="1.1" Url="http://localhost/MVC_Inventory/OrderItem/GetLastSupplier" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0.1" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/javascript, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://localhost/MVC_Inventory/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="AssetName" Value="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" RecordedValue="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="7a5c01f2-8cdb-4207-a3ad-d59b1b0cb9f4" Version="1.1" Url="http://localhost/MVC_Inventory/OrderItem/GetUnitMeasure" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0.1" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/javascript, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://localhost/MVC_Inventory/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="AssetName" Value="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" RecordedValue="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="ccb17805-7f69-4bc3-8ae2-21a441fbeba0" Version="1.1" Url="http://localhost/MVC_Inventory/OrderItem/IsAssetNew" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0.1" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="*/*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://localhost/MVC_Inventory/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="AssetName" Value="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" RecordedValue="KOMPRESY+GAZ.10X10+A+3+JA%C5%81OWE" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="POST" Guid="6a11a636-342e-428d-9b5e-a7bce0ad117c" Version="1.1" Url="http://localhost/MVC_Inventory/OrderItem/Create" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0.2" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="*/*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://localhost/MVC_Inventory/" />
+      </Headers>
+      <FormPostHttpBody>
+        <FormPostParameter Name="AssetName" Value="KOMPRESY GAZ.10X10 A 3 JAŁOWE" RecordedValue="KOMPRESY GAZ.10X10 A 3 JAŁOWE" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="ExtraAssetDescription" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="Qty" Value="200" RecordedValue="200" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="isMedicine" Value="{{DataSource1.dbo.OrderItems.isMedicine}}" RecordedValue="false" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="Supplier" Value="FARKOMED S.C." RecordedValue="FARKOMED S.C." CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="X-Requested-With" Value="XMLHttpRequest" RecordedValue="XMLHttpRequest" CorrelationBinding="" UrlEncode="True" />
+      </FormPostHttpBody>
+    </Request>
+    <Request Method="GET" Guid="ca9e1833-41a3-4ca5-be7b-3d7b7ff69bed" Version="1.1" Url="http://localhost/MVC_Inventory/OrderItem/UpdateOrderList" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0.1" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="*/*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://localhost/MVC_Inventory/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="partialToReturn" Value="body" RecordedValue="body" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+  </Items>
+  <DataSources>
+    <DataSource Name="DataSource1" Provider="System.Data.SqlClient" Connection="LAs4ogoKlDcB5zrzo+MxALvEx0hkVsK7KEyM0XRMqSeTY0MWwJ6K6mThbRgqJ5FAqqpbNabioMXZgmgsGPwYUcSIHakwAn2dxxEYyNfJGm3vsutQJF5mp69+MNeCZVt9jAZi3S/pG8cO5H/ZrsIWwjVJSvqm01gNHf/fbwrocb4f+3bH114AdKR0nfHSoLdZ" ConnectionDisplayValue="Data Source=mssql4.webio.pl,2401;Initial Catalog=gadowto_inventoryDb;Persist Security Info=True;User ID=gadowto_inventory">
+      <Tables>
+        <DataSourceTable Name="dbo.OrderItems" SelectColumns="SelectOnlyBoundColumns" AccessMethod="Sequential" />
+      </Tables>
+    </DataSource>
+  </DataSources>
+  <ValidationRules>
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidateResponseUrl, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Response URL" Description="Validates that the response URL after redirects are followed is the same as the recorded response URL.  QueryString parameters are ignored." Level="High" ExectuionOrder="BeforeDependents" />
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleResponseTimeGoal, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Response Time Goal" Description="Validates that the response time for the request is less than or equal to the response time goal as specified on the request.  Response time goals of zero will be ignored." Level="High" ExectuionOrder="AfterDependents">
+      <RuleParameters>
+        <RuleParameter Name="Tolerance" Value="25" />
+      </RuleParameters>
+    </ValidationRule>
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleRequestTime, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Maximum Request Time" Description="Verifies that the request finishes within a specified amount of time." Level="High" ExectuionOrder="BeforeDependents">
+      <RuleParameters>
+        <RuleParameter Name="MaxRequestTime" Value="200" />
+      </RuleParameters>
+    </ValidationRule>
+  </ValidationRules>
+</WebTest>

@@ -1,0 +1,22 @@
+﻿@*@model Inventory.Models.Inflows.InflowHeader
+
+
+<table>
+    <tr>
+        <td style="width:auto">Kontrahent:</td>
+        <td>@Html.DropDownListFor(m => m.Supplier, Model.Suppliers, new { @style = "width: 174px; height: 26px" })</td>
+        <td style="width:auto">Numer faktury:</td>
+        <td>@Html.TextBoxFor(m => m.Invoice, new { @style = "width: 174px; height: 26px" })</td>
+    </tr>
+    <tr>
+        <td style="width:auto">Numer przychodu:</td>
+        <td>@Html.TextBoxFor(m => m.IndexValue, new { @style = "width: 174px; height: 26px" })</td>
+        <td style="width:auto">Data wystawienia FA:</td>
+        <td>
+            @Html.TextBoxFor(m => m.InflowDate, new { @type = "date", @style = "width: 174px; height: 26px" })
+            <input type="date" style="width: 174px; height: 26px" />
+        </td>
+    </tr>
+</table>*@
+
+
